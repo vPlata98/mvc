@@ -1,0 +1,44 @@
+@model Order
+
+<div class="row">
+    <div class="col">
+        <span><b>Id de pedido: </b> @Model.OrderID</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Id de cliente: </b> 
+            <a asp-controller="clientes" asp-action="ficha" asp-route-id="@Model.CustomerID">
+                @Model.CustomerID
+            </a>
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Id de pedido: </b> @Model.EmployeeID</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Fecha de pedido: </b> @Model.OrderDate</span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Fecha de envio: </b>@Model.ShippedDate</span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Direccion: </b>(@Model.ShipCountry) @Model.ShipAddress 
+            @Model.ShipPostalCode
+            @Model.ShipCity
+        </span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Empresa que lo envia: </b> @Model.ShipViaNavigation.CompanyName</span>
+  </div>
+</div>

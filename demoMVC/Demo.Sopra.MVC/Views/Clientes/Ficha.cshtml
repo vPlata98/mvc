@@ -1,0 +1,40 @@
+@model Customer
+
+<div class="row">
+    <div class="col">
+        <span><b>Id: </b> @Model.CustomerID</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Empresa: </b> @Model.CompanyName</span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Contacto: </b>(@Model.ContactTitle) @Model.ContactName</span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Direccion: </b>(@Model.Country) @Model.Address 
+            @Model.PostalCode
+            @Model.City
+        </span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Telefono: </b> @Model.Phone</span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span><b>Fax: </b> @Model.Fax</span>
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+        @await Html.PartialAsync("_PedidosListado", ((IEnumerable<Order>)ViewBag.pedidos))
+    </div>
+</div>

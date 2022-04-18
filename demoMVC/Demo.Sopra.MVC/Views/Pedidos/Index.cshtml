@@ -1,0 +1,19 @@
+@model IEnumerable<Order>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+            App.Page.Orders.List.OnLoad()
+        });
+    </script>
+}
+<div class="row">
+    <div class="col">
+        <h1>Listado de pedidos</h1>
+        <br/>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        @await Html.PartialAsync("_PedidosListado", Model)
+    </div>
+</div>

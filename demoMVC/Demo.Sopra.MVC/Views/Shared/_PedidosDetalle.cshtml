@@ -1,0 +1,23 @@
+@model IEnumerable<Order_Detail>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><b>ID de Pedido</b></th>
+            <th><b>Cantidad</b></th>
+            <th><b>Precio:</b></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.OrderID</td>
+                <td> @item.Product.ProductName</td>
+                <td> @item.Product.UnitPrice</td>
+            </tr>
+            
+        }
+    </tbody>
+</table>

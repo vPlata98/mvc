@@ -1,0 +1,57 @@
+@model IEnumerable<Order>
+<table id="pedidos" class="table table-striped">
+    <thead>
+        <tr>
+            <th><b>ID de Pedido</b></th>
+            <th><b>ID de Cliente</b></th>
+            <th><b>ID de Empleado</b></th>
+            <th><b>Fecha de pedido</b></th>
+            <th><b>Fecha de envio</b></th>
+            <th><b>Direccion</b></th>
+            <th><b>Empresa que lo envia</b></th>
+            <th><b>Acciones</b></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    <a asp-controller="pedidos" asp-action="ficha" asp-route-id="@item.OrderID">
+                        @item.OrderID
+                    </a>
+                </td>
+                <td scope="row">
+                    <a asp-controller="clientes" asp-action="ficha" asp-route-id="@item.CustomerID">
+                        @item.CustomerID
+                    </a>
+                </td>
+                <td>@item.EmployeeID</td>
+                <td>@item.OrderDate</td>
+                <td>@item.ShippedDate <br/>
+                </td>
+                <td>@item.ShipAddress <br/>
+                    <small>
+                        @item.ShipPostalCode @item.ShipCity <br/>
+                        (@item.ShipCountry)
+                    </small>
+                </td>
+                <td>@item.ShipViaNavigation.CompanyName</td>
+                <td>
+                    <a  class="btn btn-info btn-sm"
+                    data-ajax="true"
+                    data-ajax-method="post"
+                    data-ajax-update="#modalbody"
+                    data-ajax-mode="replace"
+                    data-ajax-begin="App.Page.Orders.Detail.OnBegin()"
+                    data-ajax-success="App.Page.Orders.Detail.OnSuccess()"
+                    data-ajax-failure="App.Page.Orders.Detail.OnFailure()"
+                    data-ajax-complete="App.Page.Orders.Detail.OnComplete()"
+                    asp-controller = "pedidos"
+                    asp-action = "detalle"
+                    asp-route-id ="@item.OrderID">detalle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
